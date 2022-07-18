@@ -1,0 +1,96 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>Frontend Mentor | Interactive rating component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <div class="main-thank">
+        <div class="ek">
+          <img src="./images/illustration-thank-you.svg" alt="" />
+        </div>
+        <div class="do">
+          <div></div>
+        </div>
+        <div class="ten">
+          <p>Thank you!</p>
+          <p>
+            We appreciate you taking the time to give a rating. If you ever need
+            more support, don’t hesitate to get in touch!
+          </p>
+        </div>
+      </div>
+
+      <div class="main">
+        <div class="one">
+          <img src="./images/icon-star.svg" alt="" />
+        </div>
+        <div class="two">
+          <p>How did we do?</p>
+          <p>
+            Please let us know how we did with your support request. All
+            feedback is appreciated to help us improve our offering!
+          </p>
+        </div>
+        <div class="three">
+          <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+          </ul>
+        </div>
+        <div class="four">
+          <button id="submit">SUBMIT</button>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      let listItem = document.querySelectorAll(".three ul li");
+      let submit = document.getElementById("submit");
+      let thank = document.querySelector(".main-thank");
+
+      listItem.forEach((number) => {
+        number.addEventListener("click", () => {
+          number.style.background = "hsl(217, 12%, 63%)";
+          number.style.color = "hsl(216, 12%, 54%)";
+
+          submit.addEventListener("click", () => {
+            let heading = document.createElement("div");
+            heading.classList.add("create");
+            heading.innerHTML = `You Selected ${number.innerHTML} out of 5`;
+            document.querySelector(".do").appendChild(heading);
+            thank.style.zIndex = "1";
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
